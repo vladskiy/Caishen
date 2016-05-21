@@ -1,12 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="onc-4I-AUl">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="dfm-Bf-r8e">
+            <objects>
+                <navigationController id="onc-4I-AUl" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3IL-E3-glB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.0" green="0.57647058823529407" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="6Un-Ns-qRb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j7Z-nb-epN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-452" y="270"/>
+        </scene>
+        <!--MacBook Air-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" sceneMemberID="viewController">
@@ -18,8 +39,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MacBook Air" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSj-jg-p3c">
-                                <rect key="frame" x="20" y="28" width="560" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSj-jg-p3c">
+                                <rect key="frame" x="20" y="72" width="560" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="U1H-9M-HB1"/>
                                 </constraints>
@@ -28,9 +49,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mba" translatesAutoresizingMaskIntoConstraints="NO" id="Krh-BO-auj">
-                                <rect key="frame" x="20" y="57" width="560" height="120"/>
+                                <rect key="frame" x="20" y="72" width="560" height="149"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="4ta-cZ-rft"/>
+                                    <constraint firstAttribute="height" constant="149" id="4ta-cZ-rft"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGf-R3-9Wl">
@@ -49,11 +70,11 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="hsS-UZ-mFd" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="658-sv-r6G"/>
+                                    <segue destination="hsS-UZ-mFd" kind="show" id="658-sv-r6G"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fm4-5C-qEM">
-                                <rect key="frame" x="20" y="185" width="560" height="348"/>
+                                <rect key="frame" x="20" y="229" width="560" height="304"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">The 11-inch MacBook Air lasts up to 9 hours between charges and the 13-inch model lasts up to an incredible 12 hours. So from your morning coffee till your evening commute, you can work unplugged. When it’s time to kick back and relax, you can get up to 10 hours of iTunes movie playback on the 11-inch model and up to 12 hours on the 13-inch model. And with up to 30 days of standby time, you can go away for weeks and pick up right where you left off.</string>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
@@ -70,18 +91,19 @@
                             <constraint firstItem="XGf-R3-9Wl" firstAttribute="centerX" secondItem="Krh-BO-auj" secondAttribute="centerX" id="FIb-uG-rKc"/>
                             <constraint firstItem="qSj-jg-p3c" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" symbolic="YES" id="Kdu-H7-If0"/>
                             <constraint firstItem="fm4-5C-qEM" firstAttribute="top" secondItem="Krh-BO-auj" secondAttribute="bottom" constant="8" symbolic="YES" id="L8L-CJ-VqO"/>
-                            <constraint firstItem="Krh-BO-auj" firstAttribute="top" secondItem="qSj-jg-p3c" secondAttribute="bottom" constant="8" symbolic="YES" id="QHC-EL-MvX"/>
+                            <constraint firstItem="Krh-BO-auj" firstAttribute="top" secondItem="qSj-jg-p3c" secondAttribute="bottom" constant="-21" id="QHC-EL-MvX"/>
                             <constraint firstItem="qSj-jg-p3c" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="ULg-n7-09o"/>
                             <constraint firstItem="qSj-jg-p3c" firstAttribute="leading" secondItem="Krh-BO-auj" secondAttribute="leading" id="jwR-rg-Rca"/>
                             <constraint firstItem="qSj-jg-p3c" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="xKI-pS-lWE"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="MacBook Air" id="ddr-MD-Drc"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="251" y="270"/>
         </scene>
-        <!--View Controller-->
+        <!--Checkout-->
         <scene sceneID="dnl-HE-hyL">
             <objects>
                 <viewController modalPresentationStyle="overFullScreen" id="hsS-UZ-mFd" customClass="ViewController" customModule="Caishen_Example" customModuleProvider="target" sceneMemberID="viewController">
@@ -93,71 +115,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ogN-FM-6lq">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="CDz-9F-L0o">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0000000000000000" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xhV-mK-kcC" customClass="CardTextField" customModule="Caishen">
-                                            <rect key="frame" x="170" y="292" width="260" height="17"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="260" id="MsE-Yo-sBn"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ipi-TI-Rgi">
-                                            <rect key="frame" x="25" y="28" width="48" height="30"/>
-                                            <state key="normal" title="Cancel">
-                                                <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="cancel:" destination="hsS-UZ-mFd" eventType="touchUpInside" id="k5X-bU-DIQ"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iAI-hi-hV7">
-                                            <rect key="frame" x="544" y="28" width="31" height="30"/>
-                                            <state key="normal" title="BUY"/>
-                                            <connections>
-                                                <action selector="buy:" destination="hsS-UZ-mFd" eventType="touchUpInside" id="7n5-61-oP1"/>
-                                            </connections>
-                                        </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter your credit card information for Checkout" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRC-Y1-VLm">
-                                            <rect key="frame" x="170" y="264" width="260" height="20"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="xhV-mK-kcC" firstAttribute="centerX" secondItem="CDz-9F-L0o" secondAttribute="centerX" id="0oX-04-ZYU"/>
-                                        <constraint firstItem="XRC-Y1-VLm" firstAttribute="trailing" secondItem="xhV-mK-kcC" secondAttribute="trailing" id="59g-rp-jq8"/>
-                                        <constraint firstItem="xhV-mK-kcC" firstAttribute="centerY" secondItem="CDz-9F-L0o" secondAttribute="centerY" id="CUf-H1-3Rs"/>
-                                        <constraint firstItem="Ipi-TI-Rgi" firstAttribute="leading" secondItem="CDz-9F-L0o" secondAttribute="leading" constant="25" id="ETN-pa-yPc"/>
-                                        <constraint firstItem="Ipi-TI-Rgi" firstAttribute="top" secondItem="CDz-9F-L0o" secondAttribute="top" constant="28" id="FTo-Yg-xJn"/>
-                                        <constraint firstItem="xhV-mK-kcC" firstAttribute="top" secondItem="XRC-Y1-VLm" secondAttribute="bottom" constant="8" symbolic="YES" id="Kwv-VD-nds"/>
-                                        <constraint firstAttribute="trailing" secondItem="iAI-hi-hV7" secondAttribute="trailing" constant="25" id="Xm5-Mj-CSq"/>
-                                        <constraint firstItem="iAI-hi-hV7" firstAttribute="baseline" secondItem="Ipi-TI-Rgi" secondAttribute="baseline" id="aXB-Hc-vKH"/>
-                                        <constraint firstItem="XRC-Y1-VLm" firstAttribute="leading" secondItem="xhV-mK-kcC" secondAttribute="leading" id="gqM-q8-LXh"/>
-                                    </constraints>
-                                </view>
-                                <blurEffect style="light"/>
-                            </visualEffectView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter your credit card information for Checkout" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRC-Y1-VLm">
+                                <rect key="frame" x="20" y="77" width="560" height="20"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0000000000000000" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xhV-mK-kcC" customClass="CardTextField" customModule="Caishen">
+                                <rect key="frame" x="175" y="110" width="250" height="17"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="6zf-gu-3gI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="cardNumberSeparator" value=" "/>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ogN-FM-6lq" firstAttribute="top" secondItem="KfQ-Vz-Q2c" secondAttribute="top" id="9HZ-S2-nFb"/>
-                            <constraint firstAttribute="trailing" secondItem="ogN-FM-6lq" secondAttribute="trailing" id="dcm-R5-kPz"/>
-                            <constraint firstItem="ogN-FM-6lq" firstAttribute="bottom" secondItem="B9J-d7-Ph2" secondAttribute="top" id="oar-YM-l7a"/>
-                            <constraint firstItem="ogN-FM-6lq" firstAttribute="leading" secondItem="KfQ-Vz-Q2c" secondAttribute="leading" id="qyW-TH-cGx"/>
+                            <constraint firstItem="XRC-Y1-VLm" firstAttribute="top" secondItem="oHI-K3-Xu3" secondAttribute="bottom" constant="13" id="0um-6D-nC1"/>
+                            <constraint firstItem="xhV-mK-kcC" firstAttribute="centerX" secondItem="KfQ-Vz-Q2c" secondAttribute="centerX" id="2bx-UK-iFv"/>
+                            <constraint firstItem="XRC-Y1-VLm" firstAttribute="centerX" secondItem="xhV-mK-kcC" secondAttribute="centerX" id="b0n-hx-SMb"/>
+                            <constraint firstItem="xhV-mK-kcC" firstAttribute="top" secondItem="XRC-Y1-VLm" secondAttribute="bottom" constant="13" id="c64-sc-wab"/>
+                            <constraint firstItem="XRC-Y1-VLm" firstAttribute="leading" secondItem="KfQ-Vz-Q2c" secondAttribute="leadingMargin" id="ix7-Rd-JuY"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Checkout" id="9Ad-dH-1MQ">
+                        <barButtonItem key="rightBarButtonItem" title="Buy" id="o1z-ni-jez">
+                            <connections>
+                                <action selector="buy:" destination="hsS-UZ-mFd" id="Krb-7H-jnn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="buyButton" destination="iAI-hi-hV7" id="iDO-bF-0FZ"/>
+                        <outlet property="buyButton" destination="o1z-ni-jez" id="Em1-AW-DaW"/>
                         <outlet property="cardNumberTextField" destination="xhV-mK-kcC" id="8L8-EK-bT0"/>
-                        <outlet property="view" destination="ogN-FM-6lq" id="wJc-0m-Y2W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J9l-iT-8Dt" userLabel="First Responder" sceneMemberID="firstResponder"/>

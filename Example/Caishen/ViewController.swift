@@ -11,20 +11,18 @@ import Caishen
 
 class ViewController: UIViewController, CardTextFieldDelegate, CardIOPaymentViewControllerDelegate {
     
-    @IBOutlet weak var buyButton: UIButton?
+    @IBOutlet weak var buyButton: UIBarButtonItem?
     @IBOutlet weak var cardNumberTextField: CardTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        buyButton?.enabled = false
         cardNumberTextField.cardTextFieldDelegate = self
     }
     
     @IBAction func buy(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-    @IBAction func cancel(sender: UIButton) {
-        dismissViewControllerAnimated(true, completion: nil)
+        navigationController?.popViewControllerAnimated(true)
     }
     
     // MARK: - CardNumberTextField delegate methods
