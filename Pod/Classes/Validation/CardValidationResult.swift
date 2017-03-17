@@ -74,6 +74,9 @@ public struct CardValidationResult: OptionSet {
     /// Indicates that the card number is too long.
     public static let NumberTooLong           = CardValidationResult(rawValue: 1 << 9)
 
+    /// Indicates that the card holder name is empty.
+    public static let HolderNameIsEmpty       = CardValidationResult(rawValue: 1 << 10)
+
 }
 
 extension CardValidationResult: CustomStringConvertible {

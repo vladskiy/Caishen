@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		08A9C6CB1CC980BD00B5C4D7 /* CharacterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A9C6C91CC980BD00B5C4D7 /* CharacterExtension.swift */; };
 		08A9C6CC1CC980BD00B5C4D7 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A9C6CA1CC980BD00B5C4D7 /* Localization.swift */; };
+		295B830D1E7C257D00CDE037 /* UITextField+fixCaretPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B830C1E7C257D00CDE037 /* UITextField+fixCaretPosition.swift */; };
+		29C4D6241E7C23E5005B54FA /* FloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C4D6231E7C23E5005B54FA /* FloatingLabelTextField.swift */; };
 		2FDD151B1CC7B0B90086CEAC /* Caishen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FDD15101CC7B0B90086CEAC /* Caishen.framework */; };
 		2FDD15201CC7B0B90086CEAC /* CaishenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDD151F1CC7B0B90086CEAC /* CaishenTests.swift */; };
 		2FDD152C1CC7B1A10086CEAC /* Caishen.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FDD152A1CC7B1A10086CEAC /* Caishen.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -69,6 +71,8 @@
 /* Begin PBXFileReference section */
 		08A9C6C91CC980BD00B5C4D7 /* CharacterExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterExtension.swift; sourceTree = "<group>"; };
 		08A9C6CA1CC980BD00B5C4D7 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		295B830C1E7C257D00CDE037 /* UITextField+fixCaretPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+fixCaretPosition.swift"; sourceTree = "<group>"; };
+		29C4D6231E7C23E5005B54FA /* FloatingLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingLabelTextField.swift; sourceTree = "<group>"; };
 		2FDD15101CC7B0B90086CEAC /* Caishen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Caishen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FDD151A1CC7B0B90086CEAC /* CaishenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaishenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FDD151F1CC7B0B90086CEAC /* CaishenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaishenTests.swift; sourceTree = "<group>"; };
@@ -196,6 +200,7 @@
 		2FDD15311CC7B1AC0086CEAC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				295B830C1E7C257D00CDE037 /* UITextField+fixCaretPosition.swift */,
 				2FDD15321CC7B1AC0086CEAC /* .gitkeep */,
 				2FDD15451CC7B1AC0086CEAC /* StringExtension.swift */,
 				2FDD155C1CC7B1AC0086CEAC /* UITextField+Extensions.swift */,
@@ -250,6 +255,7 @@
 		2FDD15461CC7B1AC0086CEAC /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				29C4D6231E7C23E5005B54FA /* FloatingLabelTextField.swift */,
 				2FDD154B1CC7B1AC0086CEAC /* CardTextField.swift */,
 				2FDD15471CC7B1AC0086CEAC /* CardTextField+CardInfoTextFieldDelegate.swift */,
 				2FDD15481CC7B1AC0086CEAC /* CardTextField+InterfaceBuilder.swift */,
@@ -419,6 +425,7 @@
 				2FDD157E1CC7B1AC0086CEAC /* CardInfoTextFieldDelegate.swift in Sources */,
 				2FDD157B1CC7B1AC0086CEAC /* NumberInputTextFieldDelegate.swift in Sources */,
 				2FDD15691CC7B1AC0086CEAC /* Discover.swift in Sources */,
+				295B830D1E7C257D00CDE037 /* UITextField+fixCaretPosition.swift in Sources */,
 				2FDD15841CC7B1AC0086CEAC /* UITextField+Extensions.swift in Sources */,
 				2FDD15681CC7B1AC0086CEAC /* DinersClub.swift in Sources */,
 				08A9C6CC1CC980BD00B5C4D7 /* Localization.swift in Sources */,
@@ -432,6 +439,7 @@
 				2FDD157A1CC7B1AC0086CEAC /* NumberInputTextField.swift in Sources */,
 				2FDD156D1CC7B1AC0086CEAC /* Visa.swift in Sources */,
 				2FDD157F1CC7B1AC0086CEAC /* DetailInputTextField.swift in Sources */,
+				29C4D6241E7C23E5005B54FA /* FloatingLabelTextField.swift in Sources */,
 				2FDD15671CC7B1AC0086CEAC /* ChinaUnionPay.swift in Sources */,
 				2FDD15771CC7B1AC0086CEAC /* CardTextFieldDelegate.swift in Sources */,
 				2FDD15651CC7B1AC0086CEAC /* CVC.swift in Sources */,

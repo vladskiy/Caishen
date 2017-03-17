@@ -30,6 +30,11 @@ public struct Card {
      - note: *Caishen* will use the current date (as returned by `NSDate()`) to determine, whether a card has expired or not.
      */
     public let expiryDate: Expiry
+    
+    /**
+     The card holder name.
+    */
+    public let holderName: String?
 
     /**
      Factory method to create a card from string arguments as provided by a UITextField.
@@ -40,13 +45,13 @@ public struct Card {
      
      - returns: A card with the provided parameters.
      */
-    public static func create(number: String, cvc: String, expiry: String) throws -> Card {
+    public static func create(number: String, cvc: String, expiry: String, holder: String? = nil) throws -> Card {
         // Create card number, cvc and expiry with the arguments provided
         let cardNumber = Number(rawValue: number)
         let cardCVC = CVC(rawValue: cvc)
         let cardExpiry = Expiry(string: expiry) ?? Expiry.invalid
 
-        return Card(number: cardNumber, cvc: cardCVC, expiry: cardExpiry)
+        return Card(number: cardNumber, cvc: cardCVC, expiry: cardExpiry, holder: holder)
     }
 
     /**
@@ -56,10 +61,11 @@ public struct Card {
      - parameter cardVerificationCode: The card verification code as indicated on the user's payment card.
      - parameter expiryDate: The expiration date as indicated on the user's payment card
     */
-    public init(number: Number, cvc: CVC, expiry: Expiry) {
+    public init(number: Number, cvc: CVC, expiry: Expiry, holder: String? = nil) {
         self.bankCardNumber = number
         self.cardVerificationCode = cvc
         self.expiryDate = expiry
+        self.holderName = holder
     }
 
 }

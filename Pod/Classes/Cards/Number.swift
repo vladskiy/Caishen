@@ -12,6 +12,8 @@ import Foundation
  A Number represents the card number of a payment card.
  */
 public struct Number: RawRepresentable {
+    
+    public static let IINLength = 6
 
     public typealias RawValue = String
 

@@ -87,7 +87,7 @@ open class CardTextField: UITextField, NumberInputTextFieldDelegate {
     /**
      The text color for invalid input in a text field.
      */
-    @IBInspectable open var invalidInputColor: UIColor? {
+    @IBInspectable open var invalidInputColor: UIColor? /*{
         didSet {
             guard let invalidInputColor = invalidInputColor else {
                 return
@@ -95,8 +95,8 @@ open class CardTextField: UITextField, NumberInputTextFieldDelegate {
             let textFields: [StylizedTextField?] = [numberInputTextField, monthTextField, yearTextField, cvcTextField]
             textFields.forEach({$0?.invalidInputColor = invalidInputColor})
         }
-    }
-    
+    }*/
+  
     /**
      The label which is used as separator inbetween the text fields for month and year of the card expiry.
      */
@@ -333,7 +333,7 @@ open class CardTextField: UITextField, NumberInputTextFieldDelegate {
         numberInputTextField?.cardNumberSeparator = cardNumberSeparator ?? " - "
         numberInputTextField?.placeholder = placeholder
         
-        cvcTextField?.deleteBackwardCallback = {_ -> Void in
+        /*cvcTextField?.deleteBackwardCallback = {_ -> Void in
             if self.hideExpiryTextFields {
                 self.numberInputTextField.becomeFirstResponder()
             } else {
@@ -349,7 +349,7 @@ open class CardTextField: UITextField, NumberInputTextFieldDelegate {
             } else {
                 self.monthTextField?.becomeFirstResponder()
             }
-        }
+        }*/
         
         // Set the text alignment of cvc and month text field manually, as there is no
         // counterpart to `right` (in a left-to-right script) that changes based on localization

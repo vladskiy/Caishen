@@ -13,22 +13,16 @@ import UIKit
  You can subclass `DetailInputTextField` and override `isInputValid` to specify the validation routine.
  The default implementation accepts any input.
  */
-open class DetailInputTextField: StylizedTextField {
+open class DetailInputTextField: FloatingLabelTextField {
     
     open var cardInfoTextFieldDelegate: CardInfoTextFieldDelegate?
     
-    open func textFieldDidBeginEditing(_ textField: UITextField) {
-        if (textField.text ?? "").isEmpty {
-            textField.text = UITextField.emptyTextFieldCharacter
-        }
-    }
-    
     open override func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let newText = NSString(string: (textField.text ?? "")).replacingCharacters(in: range, with: string).replacingOccurrences(of: UITextField.emptyTextFieldCharacter, with: "")
+        let newText = NSString(string: (textField.text ?? "")).replacingCharacters(in: range, with: string)
         
-        let deletingLastCharacter = !(textField.text ?? "").isEmpty && textField.text != UITextField.emptyTextFieldCharacter && newText.isEmpty
+        let deletingLastCharacter = !(textField.text ?? "").isEmpty && newText.isEmpty
         if deletingLastCharacter {
-            textField.text = UITextField.emptyTextFieldCharacter
+            textField.text = newText
             cardInfoTextFieldDelegate?.textField(self, didEnterPartiallyValidInfo: newText)
             return false
         }

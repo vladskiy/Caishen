@@ -12,7 +12,7 @@ import UIKit
  This kind of text field only allows entering card numbers and provides means to customize the appearance of entered card numbers by changing the card number group separator.
  */
 @IBDesignable
-open class NumberInputTextField: StylizedTextField {
+open class NumberInputTextField: FloatingLabelTextField {
 
     // MARK: - Variables
     
@@ -62,19 +62,6 @@ open class NumberInputTextField: StylizedTextField {
         set {  }
     }
     
-    /// Variable to store the text color of this text field. The actual property `textColor` (as inherited from UITextField) will change based on whether or not the entered card number was invalid and may be `invalidInputColor` in this case. In order to always set and retreive the actual text color for this text field, it is saved and retreived to and from this private property.
-    private var _textColor: UIColor?
-    override open var textColor: UIColor? {
-        get {
-            return _textColor
-        }
-        set {
-            /// Just store the text color in `_textColor`. It will be set as soon as input has been entered by setting super.textColor = _textColor.
-            /// This is to avoid overriding `textColor` with `invalidInputColor` when invalid input has been entered.
-            _textColor = newValue
-        }
-    }
-
     /**
      The card type register that holds information about which card types are accepted and which ones are not.
      */
@@ -97,8 +84,8 @@ open class NumberInputTextField: StylizedTextField {
         let newTextUnformatted = cardNumberFormatter.unformat(cardNumber: newTextFormatted)
         
         // Set the text color to invalid - this will be changed to `validTextColor` later in this method if the input was valid
-        super.textColor = invalidInputColor
-        
+//        super.textColor = invalidInputColor
+      
         if !newTextUnformatted.isEmpty && !newTextUnformatted.isNumeric() {
             return false
         }
@@ -115,7 +102,7 @@ open class NumberInputTextField: StylizedTextField {
             // If the card number is already valid, should call numberInputTextFieldDidComplete on delegate
             // then set the text color back to normal and return
             numberInputTextFieldDelegate?.numberInputTextFieldDidComplete(self)
-            super.textColor = _textColor
+//            super.textColor = _textColor
             return false
         } else {
             notifyNumberInvalidity()
@@ -133,12 +120,12 @@ open class NumberInputTextField: StylizedTextField {
         /// If the number is incomplete or valid, assume it's valid and show it in `textColor`
         /// Also, if the number is of unknown type and the full IIN has not been entered yet, assume it's valid.
         if (newValidation.contains(.UnknownType) && newTextUnformatted.characters.count <= 6) || newValidation.contains(.NumberIncomplete) || newValidation == .Valid {
-            super.textColor = _textColor
+//            super.textColor = _textColor
         }
 
         return false
     }
-    
+
     /**
      Prefills the card number. The entered card number will only be prefilled if it is at least partially valid and will be displayed formatted.
      

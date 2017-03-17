@@ -24,13 +24,12 @@ open class CVCInputTextField: DetailInputTextField {
      - returns: True, if the card validation code is valid.
      */
     internal override func isInputValid(_ cvcString: String, partiallyValid: Bool) -> Bool {
-        if cvcString.characters.count == 0 && partiallyValid {
+      let cvc = CVC(rawValue: cvcString)
+        if partiallyValid && (cvcString.characters.count <= expectedInputLength
+          || cardType?.validate(cvc: cvc) == .CVCIncomplete) {
             return true
         }
-        
-        let cvc = CVC(rawValue: cvcString)
         return (cardType?.validate(cvc: cvc) == .Valid)
-            || partiallyValid && (cardType?.validate(cvc: cvc) == .CVCIncomplete)
     }
 
 }
