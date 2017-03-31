@@ -12,7 +12,7 @@ import UIKit
  This kind of text field only allows entering card numbers and provides means to customize the appearance of entered card numbers by changing the card number group separator.
  */
 @IBDesignable
-open class NumberInputTextField: FloatingLabelTextField {
+open class NumberInputTextField: FloatingLabelTextFieldWithIcon {
 
     // MARK: - Variables
     

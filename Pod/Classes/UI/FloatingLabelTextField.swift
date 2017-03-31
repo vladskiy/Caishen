@@ -478,9 +478,7 @@ open class FloatingLabelTextField: UITextField, UITextFieldDelegate {
 
     /// Invoked when the interface builder renders the control
     override open func prepareForInterfaceBuilder() {
-        if #available(iOS 8.0, *) {
-            super.prepareForInterfaceBuilder()
-        }
+        super.prepareForInterfaceBuilder()
         
         borderStyle = .none
         
