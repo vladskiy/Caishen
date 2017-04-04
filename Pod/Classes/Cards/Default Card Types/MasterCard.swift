@@ -17,7 +17,7 @@ public struct MasterCard: CardType {
 
     public let CVCLength = 3
 
-    public let identifyingDigits = Set(51...55)
+    public let identifyingDigits = Set(51...55).union( Set(2221...2720) )
 
     public init() {
         

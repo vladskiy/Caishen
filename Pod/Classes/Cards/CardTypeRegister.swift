@@ -44,7 +44,8 @@ open class CardTypeRegister {
             Discover(),
             JCB(),
             MasterCard(),
-            Visa()
+            Visa(),
+            Maestro()
         ]
     
     /**

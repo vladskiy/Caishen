@@ -12,6 +12,7 @@
 		290E598F1E8D3D4500CE1202 /* FloatingLabelTextFieldWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290E598E1E8D3D4400CE1202 /* FloatingLabelTextFieldWithIcon.swift */; };
 		295B830D1E7C257D00CDE037 /* UITextField+fixCaretPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B830C1E7C257D00CDE037 /* UITextField+fixCaretPosition.swift */; };
 		2998C9491E8F0A3F00554F7E /* ExpiryInputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2998C9481E8F0A3F00554F7E /* ExpiryInputTextField.swift */; };
+		29B9566A1E94303D0062EB5B /* Maestro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B956691E94303D0062EB5B /* Maestro.swift */; };
 		29C4D6241E7C23E5005B54FA /* FloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C4D6231E7C23E5005B54FA /* FloatingLabelTextField.swift */; };
 		2FDD151B1CC7B0B90086CEAC /* Caishen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FDD15101CC7B0B90086CEAC /* Caishen.framework */; };
 		2FDD15201CC7B0B90086CEAC /* CaishenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDD151F1CC7B0B90086CEAC /* CaishenTests.swift */; };
@@ -76,6 +77,7 @@
 		290E598E1E8D3D4400CE1202 /* FloatingLabelTextFieldWithIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingLabelTextFieldWithIcon.swift; sourceTree = "<group>"; };
 		295B830C1E7C257D00CDE037 /* UITextField+fixCaretPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+fixCaretPosition.swift"; sourceTree = "<group>"; };
 		2998C9481E8F0A3F00554F7E /* ExpiryInputTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpiryInputTextField.swift; sourceTree = "<group>"; };
+		29B956691E94303D0062EB5B /* Maestro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Maestro.swift; sourceTree = "<group>"; };
 		29C4D6231E7C23E5005B54FA /* FloatingLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingLabelTextField.swift; sourceTree = "<group>"; };
 		2FDD15101CC7B0B90086CEAC /* Caishen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Caishen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FDD151A1CC7B0B90086CEAC /* CaishenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaishenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -244,6 +246,7 @@
 				2FDD153E1CC7B1AC0086CEAC /* MasterCard.swift */,
 				2FDD153F1CC7B1AC0086CEAC /* UnknownCardType.swift */,
 				2FDD15401CC7B1AC0086CEAC /* Visa.swift */,
+				29B956691E94303D0062EB5B /* Maestro.swift */,
 			);
 			path = "Default Card Types";
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				2FDD15721CC7B1AC0086CEAC /* CardTextField+CardInfoTextFieldDelegate.swift in Sources */,
 				2FDD15821CC7B1AC0086CEAC /* TextFieldValidation.swift in Sources */,
 				2FDD15831CC7B1AC0086CEAC /* YearInputTextField.swift in Sources */,
+				29B9566A1E94303D0062EB5B /* Maestro.swift in Sources */,
 				2FDD15711CC7B1AC0086CEAC /* StringExtension.swift in Sources */,
 				2FDD157A1CC7B1AC0086CEAC /* NumberInputTextField.swift in Sources */,
 				2FDD156D1CC7B1AC0086CEAC /* Visa.swift in Sources */,
