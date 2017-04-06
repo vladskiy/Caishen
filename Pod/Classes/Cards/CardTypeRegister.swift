@@ -38,14 +38,14 @@ open class CardTypeRegister {
 
     /// An array with the default card types provided by Caishen.
     open static let defaultCardTypes: [CardType] = [
+            Visa(),
+            MasterCard(),
+            Maestro(),
             AmericanExpress(),
             ChinaUnionPay(),
             DinersClub(),
             Discover(),
-            JCB(),
-            MasterCard(),
-            Visa(),
-            Maestro()
+            JCB()
         ]
     
     /**
