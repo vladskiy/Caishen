@@ -13,6 +13,7 @@ open class CVCInputTextField: DetailInputTextField {
     
     /// The card type for the CVC that should be entered. The length of a CVC can vary based on this card type.
     open var cardType: CardType?
+
     override var expectedInputLength: Int {
         return cardType?.CVCLength ?? 3
     }
@@ -24,11 +25,17 @@ open class CVCInputTextField: DetailInputTextField {
      - returns: True, if the card validation code is valid.
      */
     internal override func isInputValid(_ cvcString: String, partiallyValid: Bool) -> Bool {
-      let cvc = CVC(rawValue: cvcString)
+        let cvc = CVC(rawValue: cvcString)
+
+        guard let _ = cvc.toInt() else {
+            return false
+        }
+
         if partiallyValid && (cvcString.characters.count <= expectedInputLength
           || cardType?.validate(cvc: cvc) == .CVCIncomplete) {
             return true
         }
+
         return (cardType?.validate(cvc: cvc) == .Valid)
     }
 

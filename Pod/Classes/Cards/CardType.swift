@@ -128,15 +128,22 @@ extension CardType {
     }
 
     public func validate(cvc: CVC) -> CardValidationResult {
-
         guard requiresCVC else {
             return .Valid
         }
 
+        return cvcIsNumeric(cvc).union(cvcLengthMatches(cvc))
+    }
+
+    public func cvcIsNumeric(_ cvc: CVC) -> CardValidationResult {
         guard let _ = cvc.toInt() else {
             return .InvalidCVC
         }
 
+        return .Valid
+    }
+
+    public func cvcLengthMatches(_ cvc: CVC) -> CardValidationResult {
         if cvc.length > CVCLength {
             return .InvalidCVC
         } else if cvc.length < CVCLength {
@@ -156,11 +163,19 @@ extension CardType {
         guard requiresExpiry else {
             return .Valid
         }
-        
+
+        return expiryIsDate(expiry).union(expiryIsActive(expiry))
+    }
+
+    public func expiryIsDate(_ expiry: Expiry) -> CardValidationResult {
         guard expiry != Expiry.invalid else {
             return .InvalidExpiry
         }
 
+        return .Valid
+    }
+
+    public func expiryIsActive(_ expiry: Expiry) -> CardValidationResult {
         let currentDate = Date()
         let expiryDate = expiry.rawValue
 
