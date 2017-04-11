@@ -18,30 +18,33 @@ open class DetailInputTextField: FloatingLabelTextField {
     open var cardInfoTextFieldDelegate: CardInfoTextFieldDelegate?
     
     open override func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let newText = NSString(string: (textField.text ?? "")).replacingCharacters(in: range, with: string)
+        let oldText = textField.text ?? ""
+        let newText = NSString(string: oldText).replacingCharacters(in: range, with: string)
         
-        let deletingLastCharacter = !(textField.text ?? "").isEmpty && newText.isEmpty
+        let deletingLastCharacter = !oldText.isEmpty && newText.isEmpty
         if deletingLastCharacter {
             textField.text = newText
             cardInfoTextFieldDelegate?.textField(self, didEnterPartiallyValidInfo: newText)
             return false
         }
         
-        let autoCompletedNewText = autocomplete(newText)
-        
-        let (currentTextFieldText, overflowTextFieldText) = split(autoCompletedNewText)
-        
-        if isInputValid(currentTextFieldText, partiallyValid: true) {
-            textField.text = currentTextFieldText
-            if isInputValid(currentTextFieldText, partiallyValid: false) {
-                cardInfoTextFieldDelegate?.textField(self, didEnterValidInfo: currentTextFieldText)
-            } else {
-                cardInfoTextFieldDelegate?.textField(self, didEnterPartiallyValidInfo: currentTextFieldText)
+        if isInputValid(newText, partiallyValid: true) {
+            let deletedCharacter = newText.characters.count < oldText.characters.count
+            let offset = deletedCharacter ? -1 : 1
+            var cursorPosition: Int? = nil
+            if let selectedRange = textField.selectedTextRange {
+                cursorPosition = textField.offset(from: textField.beginningOfDocument, to: selectedRange.start)
             }
-        }
-        
-        if !overflowTextFieldText.characters.isEmpty {
-            cardInfoTextFieldDelegate?.textField(self, didEnterOverflowInfo: overflowTextFieldText)
+            textField.text = newText
+            if let cursorPosition = cursorPosition,
+                let newPosition = textField.position(from: textField.beginningOfDocument, offset: cursorPosition + offset) {
+                textField.selectedTextRange = textField.textRange(from: newPosition, to: newPosition)
+            }
+            if isInputValid(newText, partiallyValid: false) {
+                cardInfoTextFieldDelegate?.textField(self, didEnterValidInfo: newText)
+            } else {
+                cardInfoTextFieldDelegate?.textField(self, didEnterPartiallyValidInfo: newText)
+            }
         }
         
         return false
@@ -57,20 +60,6 @@ open class DetailInputTextField: FloatingLabelTextField {
         }
     }
     
-    private func split(_ text: String) -> (currentText: String, overflowText: String) {
-        let hasOverflow = text.characters.count > expectedInputLength
-        let index = (hasOverflow) ?
-            text.characters.index(text.startIndex, offsetBy: expectedInputLength) :
-            text.characters.index(text.startIndex, offsetBy: text.characters.count)
-        return (text.substring(to: index), text.substring(from: index))
-    }
-}
-
-extension DetailInputTextField: AutoCompletingTextField {
-
-    func autocomplete(_ text: String) -> String {
-        return text
-    }
 }
 
 extension DetailInputTextField: TextFieldValidation {

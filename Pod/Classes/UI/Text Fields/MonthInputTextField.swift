@@ -35,24 +35,4 @@ open class MonthInputTextField: DetailInputTextField {
             (partiallyValid || length == 2)
     }
 
-    /**
-     Returns the auto-completed text for the current month input
-     E.g. if user input a "4", it should return a string of "04" instead.
-     This makes the input process easier for users
-
-     - returns: Auto-completed string.
-     */
-    internal override func autocomplete(_ text: String) -> String {
-        let length = text.characters.count
-        if length != 1 {
-            return text
-        }
-
-        let monthNumber = Int(text) ?? 0
-        if monthNumber > 1 {
-            return "0" + text
-        }
-
-        return text
-    }
 }

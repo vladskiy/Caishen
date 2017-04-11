@@ -32,31 +32,55 @@ open class ExpiryInputTextField: FloatingLabelTextField {
     open var cardInfoTextFieldDelegate: CardInfoTextFieldDelegate?
     
     open override func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let currentText = NSString(string: textField.text ?? "")
-        let newText = currentText.replacingCharacters(in: range, with: string)
+        let oldText = textField.text ?? ""
+        let newText = NSString(string: oldText).replacingCharacters(in: range, with: string)
         
-        let deletedLastCharacter = !(textField.text ?? "").isEmpty && newText.isEmpty
+        let deletedLastCharacter = !oldText.isEmpty && newText.isEmpty
         if deletedLastCharacter {
             textField.text = newText
             expiryTextFieldDelegate?.textField(self, didEnterPartiallyValidInfo: ("", ""))
             return false
         }
         
-        let unformatted = parse(newText)
-        let deletedSeparator = currentText.contains(expirySeparator) && !unformatted.containsSeparator
+        let unformattedOld = parse(oldText)
+        let unformattedNew = parse(newText)
+
+        let deletedSeparator = unformattedOld.containsSeparator && !unformattedNew.containsSeparator
         if deletedSeparator {
-            let month = unformatted.month
-            let text = month.substring(to: month.index(before: month.endIndex))
-            textField.text = text
-            expiryTextFieldDelegate?.textField(self, didEnterPartiallyValidInfo: (text, ""))
+            var month = unformattedOld.month
+            let year = unformattedOld.year
+            guard !month.isEmpty else {
+                // Do nothing
+                return false
+            }
+            month = month.substring(to: month.index(before: month.endIndex))
+            textField.text = format(month: month, year: year)
+            if let newPosition = textField.position(from: textField.beginningOfDocument, offset: month.characters.count) {
+                textField.selectedTextRange = textField.textRange(from: newPosition, to: newPosition)
+            }
+            expiryTextFieldDelegate?.textField(self, didEnterPartiallyValidInfo: (month, year))
             return false
         }
         
-        let month = autocomplete(unformatted.month)
-        let year = unformatted.year
-        
+        // Do not autocomplete if user deletes rather than inserts
+        let shouldAutocomplete = unformattedNew.month.characters.count > unformattedOld.month.characters.count
+        let month = shouldAutocomplete ? autocomplete(unformattedNew.month) : unformattedNew.month
+        let year = unformattedNew.year
+
         if isInputValid(month: month, year: year, partiallyValid: true) {
+            let deletedCharacter = newText.characters.count < oldText.characters.count
+            let monthEntered = month.characters.count == 2 && month.characters.count > unformattedOld.month.characters.count
+            var offset = deletedCharacter ? -1 : 1
+            var cursorPosition: Int? = nil
+            if let selectedRange = textField.selectedTextRange {
+                cursorPosition = textField.offset(from: textField.beginningOfDocument, to: selectedRange.start)
+            }
             textField.text = format(month: month, year: year)
+            if monthEntered == false,
+                let cursorPosition = cursorPosition,
+                let newPosition = textField.position(from: textField.beginningOfDocument, offset: cursorPosition + offset) {
+                textField.selectedTextRange = textField.textRange(from: newPosition, to: newPosition)
+            }
             if isInputValid(month: month, year: year, partiallyValid: false) {
                 expiryTextFieldDelegate?.textField(self, didEnterValidInfo: (month, year))
             } else {
@@ -66,13 +90,13 @@ open class ExpiryInputTextField: FloatingLabelTextField {
         
         return false
     }
-    
+
     open func prefill(_ text: String) {
         // TODO
     }
     
     open func format(month: String, year: String) -> String {
-        if month.characters.count == 2 {
+        if !year.isEmpty || month.characters.count == 2 {
             return month + expirySeparator + year
         } else {
             return month
@@ -90,15 +114,16 @@ open class ExpiryInputTextField: FloatingLabelTextField {
     
     fileprivate func autocomplete(_ month: String) -> String {
         let length = month.characters.count
-        if length != 1 {
+        guard length == 1 else {
+            // Does not require completion
             return month
         }
-        
+
         let monthNumber = Int(month) ?? 0
         if monthNumber > 1 {
             return "0" + month
         }
-        
+
         return month
     }
     
@@ -117,10 +142,6 @@ open class ExpiryInputTextField: FloatingLabelTextField {
         }
         
         guard let monthInt = UInt(month) else {
-            return false
-        }
-        
-        if length == 1 && !["0","1"].contains(month) {
             return false
         }
         
